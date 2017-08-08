@@ -4,16 +4,9 @@ var APIdata;
 var count = 0;
 
   $("#searchButton").click(function() {
+    $( "li, a, br" ).remove();
+    $(this).html("Search");
 
-    if(count > 1) {
-      $( "li" ).remove();
-      count--;
-    }
-
-    if(count === 0) {
-      $(this).html("Search");
-      count++;
-    }
 
     $.getJSON("https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=" + $("#searchBox").val() + "&origin=*", function(data) {
       APIdata = data.query.search;
@@ -25,30 +18,42 @@ var count = 0;
 
         $( "a" ).attr( "href", "http://en.wikipedia.org/wiki/" +  title);
       }
-      
-      count++;
-
     });
+
+
 
     $("#searchBox").toggleClass( "hidden", false, 10000, function() {
       $("#resContainer").toggleClass( "hidden", false, 10000);
     });
 
-
     console.log(count);
+    animateLiElements();
   });
+
+
 
 });
 
+function animateLiElements() {
+
+  $( "li" ).on({
+    mouseenter: function() {
+      $( this ).animate({
+        borderWidth: "5px"
+
+      }, 1000);
+      console.log("hello");
+    },
+    mouseleave: function() {
+      $( this ).animate({
+        borderWidth: "1px"
+      }, 1000);
+    }
+  });
+}
+
 function addHTMLList(title, snippet) {
 
-  $("<a><br><li>"+ title +"<br>"+ snippet +"</li><br><br></a>", {
-    css: {
-        width:      '40px',
-        height:     '40px'
-    }
-}).appendTo( "#response" ).animate({
-    left:  '100%'
-}, 3000);
+  $( "#response" ).prepend("<a><br><li>"+ title +"<br>"+ snippet +"</li><br><br></a>");
 
 }

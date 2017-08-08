@@ -55,7 +55,7 @@ h1 {
 
 #searchBox {
   position: absolute;
-  top: 35%;
+  top: 27%;
   left: 41%;
   height: 2em;
   border: 2px solid #b3ffe7;
@@ -65,7 +65,7 @@ h1 {
 
 #searchButton {
   position: absolute;
-  top: 20%;
+  top: 15%;
   left: 43%;
   width: 8em;
   height: 3em;
@@ -75,11 +75,12 @@ h1 {
 
 #resContainer {
   position: absolute;
-  top: 45%;
+  top: 36%;
   right: 7%;
   width: 86%;
-  height: 55%;
+  height: 64%;
   background-color: #ccfff5;
+  border: 4px solid #008080;
   padding: 3px;
 }
 
@@ -93,6 +94,7 @@ li {
   color: #003329;
   padding: 4px;
   margin: 1px;
+  border: 1px solid #00cca3;
 }
 
 a {
