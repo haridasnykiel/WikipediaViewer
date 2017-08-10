@@ -34,26 +34,31 @@ var count = 0;
 
 });
 
-function animateLiElements() {
+function addHTMLList(title, snippet) {
+
+  $( "#response" ).prepend("<a><br><li><span>"+ title +"</span><br>"+ snippet +"</li><br><br></a>");
 
   $( "li" ).on({
     mouseenter: function() {
       $( this ).animate({
         borderWidth: "5px"
 
-      }, 1000);
-      console.log("hello");
+      }, 500);
+      $( "span" ).animate({
+        color: "#00cca3"
+
+      }, 500);
     },
     mouseleave: function() {
       $( this ).animate({
         borderWidth: "1px"
-      }, 1000);
+      }, 500);
+      $( "span" ).animate({
+        color: "#001a11"
+      }, 500);
     }
+
   });
-}
 
-function addHTMLList(title, snippet) {
-
-  $( "#response" ).prepend("<a><br><li>"+ title +"<br>"+ snippet +"</li><br><br></a>");
-
+  $("a").attr( "target", "_newtab" );
 }
